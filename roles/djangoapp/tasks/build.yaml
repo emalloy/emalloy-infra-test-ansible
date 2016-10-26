@@ -3,7 +3,7 @@
 - name: djangoapp | Clone git repos
   git: >
     repo='https://github.com/lv0/django-sample-app.git'
-    dest=/opt/djangoapp/
+    dest={{ app_basedir }}
     version=dev
     accept_hostkey=yes
     update=yes
@@ -11,5 +11,5 @@
 
 - name: djangoapp | install requirements
   pip: >
-    requirements=/opt/djangoapp/requirements.txt
+    requirements={{ app_basedir }}/requirements.txt
     state=present
