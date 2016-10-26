@@ -3,3 +3,4 @@
 - include: socat.yaml
 - include: install.yaml
 - include: conf.yaml
+- include: supervisor.yaml

@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+
+[program:app]
+command = python manage.py runserver
+environment = HOME="{{ app_basedir }}/ {{ project_name }}"
+user = root
+priority = 20
+redirect_stderr = true
+directory = {{ app_basedir }}/ {{ project_name }}
+stdout_logfile = /var/log/supervisor-django.log
+
+
+[program:www]
+command = socat TCP-L:80,fork,reuseaddr TCP-CONNECT:127.0.0.1:8000
+user = root
+priority = 20
+redirect_stderr = true
+stdout_logfile = /var/log/supervisor-socat.log
+
