@@ -4,6 +4,12 @@
   git: >
     repo='https://github.com/lv0/django-sample-app.git'
     dest=/opt/djangoapp/
+    version=dev
     accept_hostkey=yes
     update=yes
     force=yes
+
+- name: djangoapp | install requirements
+  pip: >
+    requirements=/opt/djangoapp/requirements.txt
+    state=present
