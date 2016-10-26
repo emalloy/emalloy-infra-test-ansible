@@ -1,0 +1,4 @@
+---
+
+- name: socat install
+  apt: name=socat state=present
