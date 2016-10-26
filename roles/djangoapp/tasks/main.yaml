@@ -1,5 +1,5 @@
 ---
 
 - include: socat.yaml
-- include: build.yaml
+- include: install.yaml
 - include: conf.yaml
