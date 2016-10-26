@@ -1,0 +1,25 @@
+---
+
+- name: ubuntu-common | nginx | ubuntu add nginx mainline ppa
+  apt_repository: repo='ppa:nginx/development' update_cache=yes validate_certs=yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: ubuntu-common | nginx | debian add nginx mainline key
+  apt_key: >
+    url=http://nginx.org/keys/nginx_signing.key
+    state=present
+  when: ansible_distribution == 'Debian'
+
+- name: ubuntu-common | nginx | debian add nginx mainline repo
+  apt_repository: >
+    repo='deb http://nginx.org/packages/mainline/debian/ jessie nginx'
+    state=present
+    update_cache=yes
+  when: ansible_distribution == 'Debian'
+
+- name: ubuntu-common | nginx | install nginx
+  apt: name=nginx state=present
+
+- name: ubuntu-common | nginx | ensure not enabled nor started
+  service: name=nginx state=stopped enabled=yes
+
