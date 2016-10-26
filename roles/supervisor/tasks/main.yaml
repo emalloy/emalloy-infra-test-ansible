@@ -1,0 +1,32 @@
+---
+
+- name: remove the OS supervisor
+  yum: name=supervisor state=absent
+  when: ansible_os_family == "RedHat"
+
+- name: remove the OS supervisor
+  apt: name=supervisor state=absent purge=yes
+  when: ansible_os_family == "Debian"
+
+- name: create - conf.d dir
+  file: path={{ item }} state=directory
+  with_items:
+    - /etc/supervisor/conf.d
+    - /var/log/supervisor/
+
+- name: create supervisor user
+  user: >
+    name=supervisor system=yes state=present
+    home=/etc/supervisor
+
+- name: install latest supervisor
+  pip: name=supervisor==3.1.3 state=present
+
+- name: template in config
+  template: src={{ item.f }}.j2 dest=/{{ item.f }} mode={{ item.m }}
+  with_items: supervisor_files
+
+- include: monitoring.yaml
+  tags: monitoring.yaml
+
+- service: name=supervisor state=started enabled=yes

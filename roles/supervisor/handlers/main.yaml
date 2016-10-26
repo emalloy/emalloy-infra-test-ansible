@@ -1,0 +1,23 @@
+---
+
+# supervisors init script seems to have issues with restarting
+- name: restart supervisor
+  sudo: yes
+  shell: |
+    service supervisor stop
+    for i in $(seq 500); do
+      if pidof -x supervisord; then
+        sleep 1
+      else
+        break
+      fi
+    done
+    service supervisor start
+
+- name: reread supervisor
+  supervisorctl: name="{{ item }}:" state=present
+  with_items: supervisor_groups
+
+- name: supervisorctl restart
+  supervisorctl: name="{{ item }}:" state=restarted
+  with_items: supervisor_groups

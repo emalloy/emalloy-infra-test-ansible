@@ -1,0 +1,12 @@
+---
+
+supervisor_basedir: /usr/local/bin
+supervisor_conf_file: /etc/supervisord.conf
+supervisor_pid_basedir: /var/run
+
+supervisor_files:
+  - f: etc/supervisord.conf
+    m: "ug+rw"
+  - f: etc/init.d/supervisor
+    m: "ug+rwx"
+
