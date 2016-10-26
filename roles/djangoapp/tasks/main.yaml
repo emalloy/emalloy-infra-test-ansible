@@ -2,3 +2,4 @@
 
 - include: nginx.yaml
 - include: build.yaml
+- include: conf.yaml
