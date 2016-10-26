@@ -1,5 +1,5 @@
 ---
 
-- include: nginx.yaml
+- include: socat.yaml
 - include: build.yaml
 - include: conf.yaml
