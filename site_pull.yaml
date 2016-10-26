@@ -1,0 +1,8 @@
+---
+
+- name: emalloy-ro-test app install
+  hosts: tag_Name_sample
+  roles:
+    - { role: djangoapp }
+
+
