@@ -26,7 +26,4 @@
   template: src={{ item.f }}.j2 dest=/{{ item.f }} mode={{ item.m }}
   with_items: supervisor_files
 
-- include: monitoring.yaml
-  tags: monitoring.yaml
-
 - service: name=supervisor state=started enabled=yes
