@@ -3,3 +3,8 @@
 app_basedir: /opt/djangoapp/
 
 project_name: projectname
+
+db_p@ssword: no
+db_user: no
+db_name: no
+db_engine: no
