@@ -13,4 +13,4 @@
 
 - command: python manage.py migrate
   args:
-    chdir: {{ app_basedir }}/{{ project_name}}/
+    chdir: "{{ app_basedir }}/{{ project_name}}/"
