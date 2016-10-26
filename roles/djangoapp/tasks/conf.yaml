@@ -1,0 +1,13 @@
+---
+
+- template: >
+    src={{ item }}.j2
+    dest={{ app_basedir }}/{{ item }}
+    owner=root
+    group=root
+    mode=0755
+  with_items:
+    - projectname/wsgi.py
+    - projectname/settings/default.py
+    - projectname/settings/local.py
+

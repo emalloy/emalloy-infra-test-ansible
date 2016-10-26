@@ -2,4 +2,4 @@
 
 app_basedir: /opt/djangoapp/
 
-projectname: projectname
+project_name: projectname
