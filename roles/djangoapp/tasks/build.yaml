@@ -1,0 +1,9 @@
+---
+
+- name: djangoapp | Clone git repos
+  git: >
+    repo='https://github.com/lv0/django-sample-app.git'
+    dest=/opt/djangoapp/
+    accept_hostkey=yes
+    update=yes
+    force=yes
