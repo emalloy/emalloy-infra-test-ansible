@@ -1,0 +1,12 @@
+---
+- name: supervisord | copy in config
+  sudo: yes
+  template: src=supervisor/{{ item }}.j2 dest=/etc/supervisor/conf.d/{{ item }}
+            mode=0600 owner=root group=root
+  with_items:
+    - django-app.ini
+  register: supervisor_config
+
+- name: Ensure supervisord is running
+  sudo: yes
+  service: name=supervisor state=restarted enabled=yes
