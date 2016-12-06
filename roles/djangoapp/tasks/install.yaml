@@ -2,7 +2,7 @@
 
 - name: djangoapp | Clone git repos
   git: >
-    repo='https://github.com/lv0/django-sample-app.git'
+    repo='https://github.com/emalloy/django-sample-app.git'
     dest={{ app_basedir }}
     version=dev
     accept_hostkey=yes
